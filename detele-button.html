@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="info">My Secret info</h1>
+    <input type="text" placeholder="Please type delete / undo / update" id="input-f"
+    style="height: 30px ; width: 210px;"> <!-- Amar diplay input-->
+    <button id="btn-delete" disabled>Delete</button>
+    <button id='btn-undo' disabled>Undo</button>
+    <button id="btn-update">Update</button>
+
+    <!-- javascript start -->
+    <script>
+       const va = document.getElementById("input-f");
+       va.addEventListener("keyup", function() {
+      const text = va.value;
+      if (text === "delete") {
+        document.getElementById("btn-delete").removeAttribute("disabled");
+      } else {
+        document.getElementById("btn-delete").setAttribute("disabled", true);
+      }
+      
+      if (text === "undo") {
+        document.getElementById('btn-undo').removeAttribute("disabled");
+      } else {
+        document.getElementById("btn-undo").setAttribute("disabled", true);
+      }
+    });
+    //btn-delete
+    document.getElementById("btn-delete").addEventListener("click", function(){
+    const secret = document.getElementById("info");
+    secret.style.display = "none";
+    va.value = '';
+        });
+    //btn-undo
+    document.getElementById("btn-undo").addEventListener("click", function(){
+    const secret = document.getElementById("info");
+    secret.style.display = "block";
+    va.value = '';
+    });
+    //btn-update
+    document.getElementById("btn-update").addEventListener("click",function(){
+        const mytext = document.getElementById("input-f")
+        var updatedata = mytext.value;
+        var push = document.getElementById("info")
+        push.innerText = updatedata;
+        va.value = '';
+    })
+    </script>
+    <!-- javascript end -->
+</body>
+</html>
